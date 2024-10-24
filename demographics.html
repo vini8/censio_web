@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Rubik:wght@400;500;600;700&family=Space+Grotesk&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body
+    class="relative bg-[#F5F8FE] dark:bg-[#2E2E2E] font-rubik transition-all duration-300"
+  >
+    <!-- header start -->
+
+    <header
+      class="w-full fixed top-0 z-20 h-20 bg-white shadow-md dark:bg-[#212121] transition-all duration-300"
+    >
+      <div
+        class="max-w-xs mx-auto h-20 flex justify-between items-center sm:max-w-[420px] md:max-w-[calc(100vw-80px)]"
+      >
+        <div class="logo flex items-center gap-4">
+          <button
+            id="sidebar-toggle"
+            class="fixed left-5 px-3 py-3.5 rounded-lg border transition-all duration-300"
+          >
+            <img
+              class="w-full dark:invert"
+              src="./assets/menu.svg"
+              alt="sidebar toggle"
+            />
+          </button>
+          <a class="pl-14 sm:pl-12 md:pl-16" href="./index.html"
+            ><img class="hidden md:block" src="assets/logo.svg" alt="" />
+            <img class="md:hidden" src="./assets/mobile_logo.svg" alt=""
+          /></a>
+        </div>
+        <div class="nav flex gap-8">
+          <div class="mobile-search flex items-center lg:hidden">
+            <div class="search-img" onclick="searchToggle()">
+              <img src="assets/search-icon.svg" alt="" />
+            </div>
+          </div>
+          <div
+            class="w-[350px] search-box hidden lg:flex lg:justify-between p-2 gap-1.5 rounded-xl transition-all duration-300 shadow-[0px_3px_27px_rgba(69,69,80,0.1)] border border-transparent dark:border-[#F5F5F5] md:px-4 md:py-3"
+          >
+            <input
+              type="text"
+              placeholder="Search here"
+              class="w-14 font-rubik outline-none bg-transparent dark:text-[#F5F5F5] lg:w-auto"
+            />
+            <img class="dark:hidden" src="assets/search-icon.svg" alt="" />
+            <img
+              class="hidden dark:block"
+              src="assets/Search_dark.svg"
+              alt=""
+            />
+          </div>
+          <div class="nav-icons flex items-center md:gap-8">
+            <div>
+              <img
+                class="hidden dark:invert dark:grayscale transition-all duration-300 md:block"
+                src="assets/university-logo.svg"
+                alt=""
+              />
+            </div>
+            <div><img src="assets/notification.svg" alt="" /></div>
+            <div class="cursor-pointer" onclick="userToggle()">
+              <img class="hidden md:block" src="assets/user-icon.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="input-box hidden max-w-xs mx-auto sm:max-w-[420px] md:max-w-[calc(100vw-200px)] flex items-center mt-2 px-3 py-1 shadow-[0px_3px_27px_rgba(69,69,80,0.1)] h-10 rounded-lg bg-[#F5F5F5]"
+        id="search-block"
+      >
+        <input
+          type="text"
+          placeholder="Search here"
+          class="w-full font-rubik outline-none bg-transparent dark:text-[#F5F5F5]"
+        />
+      </div>
+    </header>
+
+    <!-- user profile menu -->
+
+    <div
+      id="userProfile"
+      class="fixed -top-72 right-[7%] md:right-[5.5%] lg:right-[4%] xl:right-[3%] 3xl:right-[2%] z-50 user_profile p-4 rounded-lg bg-[#FFFFFF] transition-all duration-300 opacity-0 shadow-[0px_0px_10px_#21212133] flex flex-col gap-3 w-[86%] md:w-[60%] lg:w-[45%] xl:w-[40%] 2xl:w-[35%] 3xl:w-[27%] dark:bg-[#212121]"
+    >
+      <div
+        class="profile_top px-6 py-3 bg-[#F5F5F5] rounded shadow-[0px_0px_10px_#21212133] flex flex-col gap-3 transition-all duration-300 dark:bg-[#2E2E2E]"
+      >
+        <div class="name flex items-center gap-4">
+          <div class="user_img">
+            <img src="assets/user-icon.svg" alt="" />
+          </div>
+          <span
+            class="font-medium text-[#212121] transition-all duration-300 dark:text-[#F5F5F5]"
+            >Aayush Rathoree</span
+          >
+        </div>
+
+        <div
+          class="hr border-b border-[#B1B1B1] transition-all duration-300 dark:border-[#B1B1B1]"
+        ></div>
+
+        <div class="user_pic flex items-center gap-4 px-4">
+          <div class="icon">
+            <img
+              class="transition-all duration-300 dark:hidden"
+              src="assets/photo_camera.svg"
+              alt="photo_camera"
+            />
+            <img
+              class="transition-all duration-300 hidden dark:block"
+              src="assets/photo_camera_dark.svg"
+              alt="photo_camera_dark"
+            />
+          </div>
+          <span
+            class="text-[#212121] text-sm transition-all duration-300 dark:text-[#1B75BC]"
+            >Upload Profile Photo</span
+          >
+        </div>
+      </div>
+
+      <ul class="flex flex-col">
+        <li class="px-8 py-2">
+          <a class="flex items-center justify-between" href="settings.html">
+            <div class="link flex items-center gap-4">
+              <div
+                class="setting_icon p-2 transition-all duration-300 rounded-full bg-[#F5F5F5] dark:bg-[#2E2E2E]"
+              >
+                <img
+                  class="transition-all duration-300 dark:invert"
+                  src="assets/settings_2.svg"
+                  alt="settings_2"
+                />
+              </div>
+              <span
+                class="text-[#000000] transition-all duration-300 dark:text-[#F5F5F5]"
+                >Settings</span
+              >
+            </div>
+            <div class="arrow_icon">
+              <img
+                class="transition-all duration-300 dark:invert"
+                src="assets/arrow_forward_ios.svg"
+                alt="arrow_forward_ios"
+              />
+            </div>
+          </a>
+        </li>
+        <li class="px-6 py-2">
+          <div class="hr border-b border-[#B1B1B1]"></div>
+        </li>
+        <li class="px-8 py-2">
+          <a class="flex items-center justify-between" href="demographics.html">
+            <div class="link flex items-center gap-4">
+              <div
+                class="setting_icon p-2 transition-all duration-300 rounded-full bg-[#F5F5F5] dark:bg-[#2E2E2E]"
+              >
+                <img
+                  class="transition-all duration-300 dark:invert"
+                  src="assets/demography.svg"
+                  alt="demography"
+                />
+              </div>
+              <span
+                class="text-[#000000] transition-all duration-300 dark:text-[#F5F5F5]"
+                >Demographics</span
+              >
+            </div>
+            <div class="arrow_icon">
+              <img
+                class="transition-all duration-300 dark:invert"
+                src="assets/arrow_forward_ios.svg"
+                alt="arrow_forward_ios"
+              />
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <section class="w-screen h-screen flex gap-6">
+      <!-- sidebar started -->
+      <aside
+        id="sidebar"
+        class="fixed z-10 left-0 pt-20 pb-8 w-0 bg-white h-full flex flex-col justify-between overflow-x-hidden transition-all duration-300 dark:bg-[#212121] md:w-64"
+      >
+        <div>
+          <ul class="py-4">
+            <li class="">
+              <a class="flex items-center py-3 gap-6" href="./index.html"
+                ><img
+                  class="pl-7 dark:invert"
+                  src="./assets/Dashboard.svg"
+                  alt="Dashboard_icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#CED8DF] px-1 whitespace-nowrap"
+                  >Dashboard</span
+                ></a
+              >
+            </li>
+            <li class="">
+              <a class="py-3 flex items-center gap-6" href="./games_survey.html"
+                ><img
+                  class="pl-7 dark:invert"
+                  src="./assets/Car.svg"
+                  alt="Advisors Courses icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#CED8DF] px-1 whitespace-nowrap"
+                  >Games & Survey</span
+                ></a
+              >
+            </li>
+
+            <li class="">
+              <a class="py-3 flex items-center gap-6" href="./schedule.html"
+                ><img
+                  class="pl-7 dark:invert"
+                  src="./assets/Booking.svg"
+                  alt="Schedule icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#CED8DF] px-1 whitespace-nowrap"
+                  >Schedule</span
+                ></a
+              >
+            </li>
+            <li class="">
+              <a class="py-3 flex items-center gap-6" href="./reports.html"
+                ><img
+                  class="pl-7 dark:invert"
+                  src="./assets/Bell.svg"
+                  alt="Reports icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#CED8DF] px-1 whitespace-nowrap"
+                  >Reports</span
+                ></a
+              >
+            </li>
+            <li class="">
+              <a
+                class="py-3 flex items-center gap-6"
+                href="./advisors_courses.html"
+              >
+                <img
+                  class="pl-7 dark:invert"
+                  src="./assets/Settings.svg"
+                  alt="Games & Survey icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#CED8DF] px-1 whitespace-nowrap"
+                  >Advisors Courses</span
+                ></a
+              >
+            </li>
+          </ul>
+
+          <div class="hr border border-[#B1B1B1] md:hidden"></div>
+
+          <div class="viewProfile flex items-center px-4 py-6 gap-4 md:hidden">
+            <div class="userImg">
+              <img src="assets/user-icon.svg" alt="user-icon" />
+            </div>
+            <div class="userProfile flex flex-col gap-1">
+              <span
+                class="text-[#212121] text-sm font-semibold dark:text-[#F5F5F5]"
+                >Aayush Rathoree</span
+              >
+              <span
+                class="text-[#212121] text-xs dark:text-[#F5F5F5]"
+                onclick="userToggle()"
+                >View your profile</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-12">
+          <div id="menu_vector" class="w-full transition-all duration-300 px-7">
+            <img
+              class="transition-all duration-300 dark:hidden"
+              src="./assets/menu_vector.svg"
+              alt="menu_vector"
+            />
+            <img
+              class="transition-all duration-300 hidden dark:block"
+              src="./assets/menu_vector_dark.svg"
+              alt="menu_vector"
+            />
+          </div>
+
+          <div class="flex items-center justify-center">
+            <input id="checkbox" type="checkbox" class="hidden" />
+            <label for="checkbox" class="flex items-center cursor-pointer">
+              <div
+                id="light_icon"
+                class="w-full transition-all duration-300 mr-3"
+              >
+                <img
+                  class="dark:hidden"
+                  src="./assets/light_mode.svg"
+                  alt="light_mode"
+                />
+                <img
+                  class="hidden dark:block"
+                  src="./assets/Sun_dark.svg"
+                  alt="light_mode"
+                />
+              </div>
+
+              <div class="relative">
+                <div
+                  class="w-10 h-6 bg-[rgba(120, 120, 128, 0.36)] border border-[#AAAAAA] rounded-full shadow-inner dark:bg-[#FFFFFF0A]"
+                ></div>
+                <div
+                  class="toggle-dot absolute w-5 h-5 bg-white border border-[rgba(0, 0, 0, 0.04)] rounded-full shadow inset-y-0 left-0 m-0.5 dark:bg-[#0D0D0D] dark:border-[#0D0D0D]"
+                ></div>
+              </div>
+
+              <div
+                id="dark_icon"
+                class="w-full transition-all duration-300 ml-3 text-[#202A31] font-rubik dark:text-[#CED8DF]"
+              >
+                <img
+                  class="dark:hidden"
+                  src="./assets/Moon.svg"
+                  alt="dark_mode"
+                />
+                <img
+                  class="hidden dark:block"
+                  src="./assets/moon_dark.svg"
+                  alt="dark_mode_moon"
+                />
+              </div>
+            </label>
+          </div>
+        </div>
+      </aside>
+      <!-- sidebar ended -->
+
+      <!-- main content started -->
+      <main
+        class="max-w-xs mx-auto pt-24 pb-20 flex flex-col gap-6 w-full transition-all duration-300 sm:max-w-[420px] md:max-w-[calc(100vw-80px)] md:pl-16"
+      >
+        <div
+          id="main_section"
+          class="flex flex-col gap-6 transition-all duration-30 md:w-[72%] lg:w-[79%] xl:w-[84.5%] 2xl:w-[86.5%] 3xl:w-[90%] md:ml-auto"
+        >
+          <div class="pt-2">
+            <span
+              class="font-rubik font-semibold text-[#1A1919] text-xl md:text-2xl dark:text-[#F5F5F5]"
+              >Demographics</span
+            >
+          </div>
+          <div
+            class="bg-white px-4 py-7 rounded-2xl dark:bg-[#212121] transition-all duration-300"
+          >
+            <form
+              class="flex flex-col gap-6"
+              action=""
+              id="settingForm"
+              name="settingForm"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <div
+                class="input_group grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              >
+                <div class="relative z-0 w-full group">
+                  <label
+                    for="gender"
+                    class="text-[#92929D] text-base dark:text-gray-300 absolute px-1 transition-all duration-300 -top-[16%] left-3 w-auto text-[#00000099] text-sm bg-white dark:bg-[#212121] dark:text-[#F5F5F5]"
+                  >
+                    Gender
+                  </label>
+                  <select
+                    name="gender"
+                    id="gender"
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#92929D] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] dark:text-white outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5]"
+                    required=""
+                  >
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="downArrow absolute top-[30%] right-3">
+                    <img
+                      class="dark:invert"
+                      src="assets/Arrow.svg"
+                      alt="Arrow"
+                    />
+                  </div>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                  <label
+                    for="yearOfBirth"
+                    class="text-[#92929D] text-base dark:text-gray-300 absolute px-1 transition-all duration-300 -top-[16%] left-3 w-auto text-[#00000099] text-sm bg-white dark:bg-[#212121] dark:text-[#F5F5F5]"
+                  >
+                    Year Of Birth
+                  </label>
+                  <select
+                    name="yearOfBirth"
+                    id="yearOfBirth"
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#92929D] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] dark:text-white outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5]"
+                    required=""
+                  >
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <div class="downArrow absolute top-[30%] right-3">
+                    <img
+                      class="dark:invert"
+                      src="assets/Arrow.svg"
+                      alt="Arrow"
+                    />
+                  </div>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                  <label
+                    for="race"
+                    class="text-[#92929D] text-base dark:text-gray-300 absolute px-1 transition-all duration-300 -top-[16%] left-3 w-auto text-[#00000099] text-sm bg-white dark:bg-[#212121] dark:text-[#F5F5F5]"
+                  >
+                    Race
+                  </label>
+                  <select
+                    name="race"
+                    id="race"
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#92929D] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] dark:text-white outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5]"
+                    required=""
+                  >
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <div class="downArrow absolute top-[30%] right-3">
+                    <img
+                      class="dark:invert"
+                      src="assets/Arrow.svg"
+                      alt="Arrow"
+                    />
+                  </div>
+                </div>
+
+                <div class="relative appearance-none label-floating">
+                  <input
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#000000DE] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5] dark:text-[#F5F5F5]"
+                    id="zipCode"
+                    name="zipCode"
+                    type="text"
+                    placeholder="Zip Code"
+                  />
+                  <label
+                    class="text-[#92929D] text-base dark:text-gray-300 px-1 bg-transparent absolute transition-all duration-3 00 top-[31%] left-3 w-auto text-[#00000099] bg-white dark:bg-[#212121] dark:text-[#F5F5F5] opacity-0"
+                    for="zipCode"
+                  >
+                    Zip Code
+                  </label>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                  <label
+                    for="born"
+                    class="text-[#92929D] text-base dark:text-gray-300 absolute px-1 transition-all duration-300 -top-[16%] left-4 w-auto text-[#00000099] text-sm bg-white dark:bg-[#212121] dark:text-[#F5F5F5]"
+                  >
+                    Where you born in the US
+                  </label>
+                  <select
+                    name="born"
+                    id="born"
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#92929D] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] dark:text-white outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5]"
+                    required=""
+                  >
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <div class="downArrow absolute top-[30%] right-3">
+                    <img
+                      class="dark:invert"
+                      src="assets/Arrow.svg"
+                      alt="Arrow"
+                    />
+                  </div>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                  <label
+                    for="enrollmentStatus"
+                    class="text-[#92929D] text-base dark:text-gray-300 absolute px-1 transition-all duration-300 -top-[16%] left-3 w-auto text-[#00000099] text-sm bg-white dark:bg-[#212121] dark:text-[#F5F5F5]"
+                  >
+                    Enrollment Status
+                  </label>
+                  <select
+                    name="enrollmentStatus"
+                    id="enrollmentStatus"
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#92929D] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] dark:text-white outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5]"
+                    required=""
+                  >
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <div class="downArrow absolute top-[30%] right-3">
+                    <img
+                      class="dark:invert"
+                      src="assets/Arrow.svg"
+                      alt="Arrow"
+                    />
+                  </div>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                  <label
+                    for="workStatus"
+                    class="text-[#92929D] text-base dark:text-gray-300 absolute px-1 transition-all duration-300 -top-[16%] left-3 w-auto text-[#00000099] text-sm bg-white dark:bg-[#212121] dark:text-[#F5F5F5]"
+                  >
+                    Work Status
+                  </label>
+                  <select
+                    name="workStatus"
+                    id="workStatus"
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#92929D] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] dark:text-white outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5]"
+                    required=""
+                  >
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <div class="downArrow absolute top-[30%] right-3">
+                    <img
+                      class="dark:invert"
+                      src="assets/Arrow.svg"
+                      alt="Arrow"
+                    />
+                  </div>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                  <label
+                    for="businessOwnership"
+                    class="text-[#92929D] text-base dark:text-gray-300 absolute px-1 transition-all duration-300 -top-[16%] left-3 w-auto text-[#00000099] text-sm bg-white dark:bg-[#212121] dark:text-[#F5F5F5]"
+                  >
+                    Business Ownership
+                  </label>
+                  <select
+                    name="businessOwnership"
+                    id="businessOwnership"
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#92929D] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] dark:text-white outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5]"
+                    required=""
+                  >
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <div class="downArrow absolute top-[30%] right-3">
+                    <img
+                      class="dark:invert"
+                      src="assets/Arrow.svg"
+                      alt="Arrow"
+                    />
+                  </div>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                  <label
+                    for="mother_edu"
+                    class="text-[#92929D] text-base dark:text-gray-300 absolute px-1 transition-all duration-300 -top-[16%] left-3 w-auto text-[#00000099] text-sm bg-white dark:bg-[#212121] dark:text-[#F5F5F5]"
+                  >
+                    Mother Education
+                  </label>
+                  <select
+                    name="mother_edu"
+                    id="mother_edu"
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#92929D] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] dark:text-white outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5]"
+                    required=""
+                  >
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <div class="downArrow absolute top-[30%] right-3">
+                    <img
+                      class="dark:invert"
+                      src="assets/Arrow.svg"
+                      alt="Arrow"
+                    />
+                  </div>
+                </div>
+
+                <div class="relative z-0 w-full group">
+                  <label
+                    for="father_edu"
+                    class="text-[#92929D] text-base dark:text-gray-300 absolute px-1 transition-all duration-300 -top-[16%] left-3 w-auto text-[#00000099] text-sm bg-white dark:bg-[#212121] dark:text-[#F5F5F5]"
+                  >
+                    Father Education
+                  </label>
+                  <select
+                    name="father_edu"
+                    id="father_edu"
+                    class="bg-white text-base border py-4 px-3 border-[#0000003B] text-[#92929D] rounded-lg appearance-none block w-full transition-all duration-300 dark:bg-[#212121] dark:border-[#F5F5F5] dark:text-white outline-none disabled:bg-[#F5F5F5] disabled:bg-[#F5F5F5]"
+                    required=""
+                  >
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                  <div class="downArrow absolute top-[30%] right-3">
+                    <img
+                      class="dark:invert"
+                      src="assets/Arrow.svg"
+                      alt="Arrow"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="form_submit grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              >
+                <button
+                  type="submit"
+                  class="rounded bg-[#1B75BC] text-[#FFFFFF] py-2"
+                >
+                  UPDATE
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+      <!-- main content ended -->
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

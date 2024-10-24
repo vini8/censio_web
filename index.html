@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Rubik:wght@400;500;600;700&family=Space+Grotesk&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-[#F5F8FE] dark:bg-[#2E2E2E] font-rubik transition-all duration-300"
+  >
+    <!-- Header Start -->
+    <header
+      class="w-full fixed top-0 z-20 h-20 bg-white shadow-md dark:bg-[#212121] transition-all duration-300"
+    >
+      <div
+        class="max-w-xs mx-auto h-20 flex justify-between items-center sm:max-w-[420px] md:max-w-[calc(100vw-80px)]"
+      >
+        <div class="logo flex items-center gap-4">
+          <button
+            id="sidebar-toggle"
+            class="fixed left-5 px-3 py-3.5 rounded-lg border transition-all duration-300"
+          >
+            <img
+              class="w-full dark:invert"
+              src="./assets/menu.svg"
+              alt="sidebar toggle"
+            />
+          </button>
+          <a class="pl-14 sm:pl-12 md:pl-16" href="./index.html"
+            ><img class="hidden md:block" src="assets/logo.svg" alt="" />
+            <img class="md:hidden" src="./assets/mobile_logo.svg" alt=""
+          /></a>
+        </div>
+        <div class="nav flex gap-8">
+          <div class="mobile-search flex items-center lg:hidden">
+            <div class="search-img" onclick="searchToggle()">
+              <img src="assets/search-icon.svg" alt="" />
+            </div>
+          </div>
+          <div
+            class="w-[350px] search-box hidden lg:flex lg:justify-between p-2 gap-1.5 rounded-xl transition-all duration-300 shadow-[0px_3px_27px_rgba(69,69,80,0.1)] border border-transparent dark:border-[#F5F5F5] md:px-4 md:py-3"
+          >
+            <input
+              type="text"
+              placeholder="Search here"
+              class="w-14 font-rubik outline-none bg-transparent dark:text-[#F5F5F5] lg:w-auto"
+            />
+            <img class="dark:hidden" src="assets/search-icon.svg" alt="" />
+            <img
+              class="hidden dark:block"
+              src="assets/Search_dark.svg"
+              alt=""
+            />
+          </div>
+          <div class="nav-icons flex items-center md:gap-8">
+            <div>
+              <img
+                class="hidden dark:invert dark:grayscale transition-all duration-300 md:block"
+                src="assets/university-logo.svg"
+                alt=""
+              />
+            </div>
+            <div><img src="assets/notification.svg" alt="" /></div>
+            <div class="cursor-pointer" onclick="userToggle()">
+              <img class="hidden md:block" src="assets/user-icon.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="input-box hidden max-w-xs mx-auto sm:max-w-[420px] md:max-w-[calc(100vw-200px)] flex items-center mt-2 px-3 py-1 shadow-[0px_3px_27px_rgba(69,69,80,0.1)] h-10 rounded-lg bg-[#F5F5F5]"
+        id="search-block"
+      >
+        <input
+          type="text"
+          placeholder="Search here"
+          class="w-full font-rubik outline-none bg-transparent dark:text-[#F5F5F5]"
+        />
+      </div>
+    </header>
+
+    <!-- user profile menu -->
+
+    <div
+      id="userProfile"
+      class="fixed -top-72 right-[7%] md:right-[5.5%] lg:right-[4%] xl:right-[3%] 3xl:right-[2%] z-50 user_profile p-4 rounded-lg bg-[#FFFFFF] transition-all duration-300 opacity-0 shadow-[0px_0px_10px_#21212133] flex flex-col gap-3 w-[86%] md:w-[60%] lg:w-[45%] xl:w-[40%] 2xl:w-[35%] 3xl:w-[27%] dark:bg-[#212121]"
+    >
+      <div
+        class="profile_top px-6 py-3 bg-[#F5F5F5] rounded shadow-[0px_0px_10px_#21212133] flex flex-col gap-3 transition-all duration-300 dark:bg-[#2E2E2E]"
+      >
+        <div class="name flex items-center gap-4">
+          <div class="user_img">
+            <img src="assets/user-icon.svg" alt="" />
+          </div>
+          <span
+            class="font-semibold text-[#212121] transition-all duration-300 dark:text-[#F5F5F5]"
+            >Aayush Rathoree</span
+          >
+        </div>
+
+        <div
+          class="hr border-b border-[#B1B1B1] transition-all duration-300 dark:border-[#B1B1B1]"
+        ></div>
+
+        <div class="user_pic flex items-center gap-4 px-4">
+          <div class="icon">
+            <img
+              class="transition-all duration-300 dark:hidden"
+              src="assets/photo_camera.svg"
+              alt="photo_camera"
+            />
+            <img
+              class="transition-all duration-300 hidden dark:block"
+              src="assets/photo_camera_dark.svg"
+              alt="photo_camera_dark"
+            />
+          </div>
+          <span
+            class="text-[#212121] text-sm transition-all duration-300 dark:text-[#1B75BC]"
+            >Upload Profile Photo</span
+          >
+        </div>
+      </div>
+
+      <ul class="flex flex-col">
+        <li class="px-8 py-2">
+          <a class="flex items-center justify-between" href="settings.html">
+            <div class="link flex items-center gap-4">
+              <div
+                class="setting_icon p-2 transition-all duration-300 rounded-full bg-[#F5F5F5] dark:bg-[#2E2E2E]"
+              >
+                <img
+                  class="transition-all duration-300 dark:invert"
+                  src="assets/settings_2.svg"
+                  alt="settings_2"
+                />
+              </div>
+              <span
+                class="text-[#000000] transition-all duration-300 dark:text-[#F5F5F5]"
+                >Settings</span
+              >
+            </div>
+            <div class="arrow_icon">
+              <img
+                class="transition-all duration-300 dark:invert"
+                src="assets/arrow_forward_ios.svg"
+                alt="arrow_forward_ios"
+              />
+            </div>
+          </a>
+        </li>
+        <li class="px-6 py-2">
+          <div class="hr border-b border-[#B1B1B1]"></div>
+        </li>
+        <li class="px-8 py-2">
+          <a class="flex items-center justify-between" href="demographics.html">
+            <div class="link flex items-center gap-4">
+              <div
+                class="setting_icon p-2 transition-all duration-300 rounded-full bg-[#F5F5F5] dark:bg-[#2E2E2E]"
+              >
+                <img
+                  class="transition-all duration-300 dark:invert"
+                  src="assets/demography.svg"
+                  alt="demography"
+                />
+              </div>
+              <span
+                class="text-[#000000] transition-all duration-300 dark:text-[#F5F5F5]"
+                >Demographics</span
+              >
+            </div>
+            <div class="arrow_icon">
+              <img
+                class="transition-all duration-300 dark:invert"
+                src="assets/arrow_forward_ios.svg"
+                alt="arrow_forward_ios"
+              />
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Header End -->
+
+    <section class="w-screen h-screen flex gap-6">
+      <!-- sidebar started -->
+      <aside
+        id="sidebar"
+        class="fixed left-0 pt-20 pb-8 w-0 bg-white h-full flex flex-col justify-between overflow-x-hidden transition-all duration-300 dark:bg-[#212121] md:w-64 z-10"
+      >
+        <div>
+          <ul class="py-4">
+            <li
+              class="reletive bg-[#CCE0F0] font-medium dark:bg-[#B1B1B133] transition-all duration-300"
+            >
+              <a class="flex items-center py-3 gap-6" href="./index.html">
+                <div
+                  class="absolute left-0 rounded-full w-1.5 h-8 bg-[#1B75BC] dark:bg-[#FFFFFF] transition-all duration-300"
+                ></div>
+                <img
+                  class="pl-7 dark:invert"
+                  src="./assets/Dashboard.svg"
+                  alt="Dashboard_icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#FFFFFF] px-1 whitespace-nowrap"
+                  >Dashboard</span
+                ></a
+              >
+            </li>
+            <li class="">
+              <a
+                class="opacity-75 py-3 flex items-center gap-6"
+                href="./games_survey.html"
+              >
+                <img
+                  class="pl-7 dark:invert"
+                  src="./assets/Car.svg"
+                  alt="Games & Survey icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#CED8DF] px-1 whitespace-nowrap"
+                  >Games & Survey</span
+                ></a
+              >
+            </li>
+            <li class="">
+              <a
+                class="opacity-75 py-3 flex items-center gap-6"
+                href="./schedule.html"
+                ><img
+                  class="pl-7 dark:invert"
+                  src="./assets/Booking.svg"
+                  alt="Schedule icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#CED8DF] px-1 whitespace-nowrap"
+                  >Schedule</span
+                ></a
+              >
+            </li>
+            <li class="">
+              <a
+                class="opacity-75 py-3 flex items-center gap-6"
+                href="./reports.html"
+                ><img
+                  class="pl-7 dark:invert"
+                  src="./assets/Bell.svg"
+                  alt="Reports icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#CED8DF] px-1 whitespace-nowrap"
+                  >Reports</span
+                ></a
+              >
+            </li>
+            <li class="">
+              <a
+                class="opacity-75 py-3 flex items-center gap-6"
+                href="./advisors_courses.html"
+                ><img
+                  class="pl-7 dark:invert"
+                  src="./assets/Settings.svg"
+                  alt="Advisors Courses icon"
+                />
+                <span
+                  class="font-rubik text-[#202A31] dark:text-[#CED8DF] px-1 whitespace-nowrap"
+                  >Advisors Courses</span
+                ></a
+              >
+            </li>
+          </ul>
+
+          <div class="hr border border-[#B1B1B1] md:hidden"></div>
+
+          <div class="viewProfile flex items-center px-4 py-6 gap-4 md:hidden">
+            <div class="userImg">
+              <img src="assets/user-icon.svg" alt="user-icon" />
+            </div>
+            <div class="userProfile flex flex-col gap-1">
+              <span
+                class="text-[#212121] text-sm font-semibold dark:text-[#F5F5F5]"
+                >Aayush Rathoree</span
+              >
+              <span
+                class="text-[#212121] text-xs dark:text-[#F5F5F5]"
+                onclick="userToggle()"
+                >View your profile</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-12">
+          <div id="menu_vector" class="w-full transition-all duration-300 px-7">
+            <img
+              class="transition-all duration-300 dark:hidden"
+              src="./assets/menu_vector.svg"
+              alt="menu_vector"
+            />
+            <img
+              class="transition-all duration-300 hidden dark:block"
+              src="./assets/menu_vector_dark.svg"
+              alt="menu_vector"
+            />
+          </div>
+
+          <div class="flex items-center justify-center">
+            <input id="checkbox" type="checkbox" class="hidden" />
+            <label for="checkbox" class="flex items-center cursor-pointer">
+              <div
+                id="light_icon"
+                class="w-full transition-all duration-300 mr-3"
+              >
+                <img
+                  class="dark:hidden"
+                  src="./assets/light_mode.svg"
+                  alt="light_mode"
+                />
+                <img
+                  class="hidden dark:block"
+                  src="./assets/Sun_dark.svg"
+                  alt="light_mode"
+                />
+              </div>
+
+              <div class="relative">
+                <div
+                  class="w-10 h-6 bg-[rgba(120, 120, 128, 0.36)] border border-[#AAAAAA] rounded-full shadow-inner dark:bg-[#FFFFFF0A]"
+                ></div>
+                <div
+                  class="toggle-dot absolute w-5 h-5 bg-[#F5F5F5] border border-[rgba(0, 0, 0, 0.04)] rounded-full shadow inset-y-0 left-0 m-0.5 dark:bg-[#0D0D0D] dark:border-[#0D0D0D]"
+                ></div>
+              </div>
+
+              <div
+                id="dark_icon"
+                class="w-full transition-all duration-300 ml-3 text-[#202A31] font-rubik dark:text-[#CED8DF]"
+              >
+                <img
+                  class="dark:hidden"
+                  src="./assets/Moon.svg"
+                  alt="dark_mode"
+                />
+                <img
+                  class="hidden dark:block"
+                  src="./assets/moon_dark.svg"
+                  alt="dark_mode_moon"
+                />
+              </div>
+            </label>
+          </div>
+        </div>
+      </aside>
+      <!-- sidebar ended -->
+
+      <!-- main content started -->
+      <main
+        class="max-w-xs mx-auto pt-24 pb-20 flex flex-col gap-6 w-full transition-all duration-300 sm:max-w-[420px] md:max-w-[calc(100vw-80px)] md:pl-16"
+      >
+        <div
+          id="main_section"
+          class="flex flex-col gap-6 transition-all duration-30 md:w-[72%] lg:w-[79%] xl:w-[84.5%] 2xl:w-[86.5%] 3xl:w-[90%] md:ml-auto"
+        >
+          <div
+            class="relative hero-head flex flex-col items-center gap-8 mt-10 p-4 md:p-8 lg:flex lg:flex-row lg:items-center bg-[#CCE0F080] rounded-2xl md:pl-8 lg:mt-16 dark:bg-[#B1B1B133] transition-all duration-300"
+          >
+            <div
+              class="w-full pl-4 lg:pl-0 md:w-[440px] lg:w-[400px] flex flex-col gap-6"
+            >
+              <h1
+                class="font-rubik font-medium text-lg md:text-xl dark:text-[#F5F5F5]"
+              >
+                Hello,
+                <span class="font-rubik font-bold text-xl md:text-2xl"
+                  >Dobby</span
+                >
+              </h1>
+              <p
+                class="font-rubik text-lg md:text-xl text-[#000000] dark:text-[#F5F5F5]"
+              >
+                You’ve learned 80% of your goal this week! Keep it up and
+                improve your results.
+              </p>
+            </div>
+            <div
+              class="lg:absolute right-[0%] -top-[30%] xl:right-[15%] 2xl:right-[18%] 3xl:right-[23%]"
+            >
+              <img
+                class="transition-all duration-300 dark:hidden"
+                src="assets/mission-banner.svg"
+                alt=""
+                class="lg:mt-[-46px]"
+              />
+              <img
+                class="transition-all duration-300 hidden dark:block"
+                src="assets/mission-banner_dark.svg"
+                alt=""
+                class="lg:mt-[-46px]"
+              />
+            </div>
+          </div>
+          <!-- hero-head ends here -->
+
+          <div class="hero grid grid-cols-1 gap-6 xl:grid-cols-3">
+            <div
+              class="card-1 flex flex-col gap-6 w-full bg-[#FFFFFF] p-6 rounded-2xl dark:bg-[#212121] transition-all duration-300"
+            >
+              <div
+                class="card-head border-b border-[#202A31] border-opacity-30 pb-3 dark:border-[#CED8DF4D]"
+              >
+                <h2
+                  class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                >
+                  Your Progress
+                </h2>
+              </div>
+              <div class="card-body flex flex-col gap-6">
+                <div>
+                  <h2
+                    class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Game 1
+                  </h2>
+
+                  <div
+                    class="bar-block flex justify-between items-center gap-6"
+                  >
+                    <div
+                      class="bar1 w-full h-2.5 overflow-hidden bg-[#ededed4d] rounded-2xl border-dashed border-[Neutral/ 50] border-[0.497577px] transition-all duration-300 dark:border-[#F5F5F54D] dark:border-[#F5F5F54D]"
+                    >
+                      <div
+                        class="front-bar1 h-2.5 bg-[#1B75BC] rounded-2xl w-[80%]"
+                      >
+                    </div>
+                    </div>
+                    <div
+                      class="bar-value1 font-rubik text-base text-[#39434F] dark:text-[#B1B1B1]"
+                    >
+                      80%
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h2
+                    class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Game 2
+                  </h2>
+
+                  <div
+                    class="bar-block flex justify-between items-center gap-6"
+                  >
+                    <div
+                      class="bar1 w-full h-2.5 overflow-hidden bg-[#ededed4d] rounded-2xl border-dashed border-[Neutral/ 50] border-[0.497577px] transition-all duration-300 dark:border-[#F5F5F54D]"
+                    >
+                      <div
+                        class="front-bar2 h-2.5 bg-[#1B75BC] rounded-2xl w-[40%]"
+                      ></div>
+                    </div>
+                    <div
+                      class="bar-value1 font-rubik text-base text-[#39434F] dark:text-[#B1B1B1]"
+                    >
+                      40%
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h2
+                    class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Game 3
+                  </h2>
+
+                  <div
+                    class="bar-block flex justify-between items-center gap-6"
+                  >
+                    <div
+                      class="bar1 w-full h-2.5 overflow-hidden bg-[#ededed4d] rounded-2xl border-dashed border-[Neutral/ 50] border-[0.497577px] transition-all duration-300 dark:border-[#F5F5F54D]"
+                    >
+                      <div
+                        class="front-bar3 h-2.5 bg-[#1B75BC] rounded-2xl w-[20%]"
+                      ></div>
+                    </div>
+                    <div
+                      class="bar-value1 font-rubik text-base text-[#39434F] dark:text-[#B1B1B1]"
+                    >
+                      20%
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h2
+                    class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Game 4
+                  </h2>
+
+                  <div
+                    class="bar-block flex justify-between items-center gap-6"
+                  >
+                    <div
+                      class="bar1 w-full h-2.5 overflow-hidden bg-[#ededed4d] rounded-2xl border-dashed border-[Neutral/ 50] border-[0.497577px] transition-all duration-300 dark:border-[#F5F5F54D]"
+                    >
+                      <div
+                        class="front-bar4 h-2.5 bg-[#1B75BC] rounded-2xl w-[50%]"
+                      ></div>
+                    </div>
+                    <div
+                      class="bar-value1 font-rubik text-base text-[#39434F] dark:text-[#B1B1B1]"
+                    >
+                      50%
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h2
+                    class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Game 5
+                  </h2>
+
+                  <div
+                    class="bar-block flex justify-between items-center gap-6"
+                  >
+                    <div
+                      class="bar1 w-full h-2.5 overflow-hidden bg-[#ededed4d] rounded-2xl border-dashed border-[Neutral/ 50] border-[0.497577px] transition-all duration-300 dark:border-[#F5F5F54D]"
+                    >
+                      <div
+                        class="front-bar5 h-2.5 bg-[#1B75BC] rounded-2xl w-[60%]"
+                      ></div>
+                    </div>
+                    <div
+                      class="bar-value1 font-rubik text-base text-[#39434F] dark:text-[#B1B1B1]"
+                    >
+                      60%
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h2
+                    class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    SX<sup>2</sup> Survey
+                  </h2>
+
+                  <div
+                    class="bar-block flex justify-between items-center gap-6"
+                  >
+                    <div
+                      class="bar1 w-full h-2.5 overflow-hidden bg-[#ededed4d] rounded-2xl border-dashed border-[Neutral/ 50] border-[0.497577px] transition-all duration-300 dark:border-[#F5F5F54D]"
+                    >
+                      <div
+                        class="front-bar6 h-2.5 bg-[#1B75BC] rounded-2xl w-[10%]"
+                      ></div>
+                    </div>
+                    <div
+                      class="bar-value1 font-rubik text-base text-[#39434F] dark:text-[#B1B1B1]"
+                    >
+                      10%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="card-2 bg-[#FFFFFF] p-6 rounded-2xl dark:bg-[#212121] transition-all duration-300"
+            >
+              <div>
+                <div class="card-head pb-8">
+                  <h2
+                    class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Your Cohort’s Progress
+                  </h2>
+                </div>
+                <div class="card-body flex flex-col gap-4">
+                  <div class="flex justify-between items-center">
+                    <h2
+                      class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      Game 1
+                    </h2>
+                    <div class="relative">
+                      <div
+                        class="container1 transition-all duration-300 dark:before:bg-[#212121]"
+                      >
+                        <div
+                          class="container-value1 transition-all duration-300 bg-gradient-to-r from-[#F53C3C] to-[#F5AB3C] bg-clip-text text-transparent"
+                        >
+                          0%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-between items-center">
+                    <h2
+                      class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      Game 2
+                    </h2>
+                    <div class="relative">
+                      <div
+                        class="container2 transition-all duration-300 dark:before:bg-[#212121]"
+                      >
+                        <div
+                          class="container-value2 transition-all duration-300 bg-gradient-to-r from-[#F53C3C] to-[#F5AB3C] bg-clip-text text-transparent"
+                        >
+                          0%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-between items-center">
+                    <h2
+                      class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      Game 3
+                    </h2>
+                    <div class="relative">
+                      <div
+                        class="container3 transition-all duration-300 dark:before:bg-[#212121]"
+                      >
+                        <div
+                          class="container-value3 transition-all duration-300 bg-gradient-to-r from-[#F53C3C] to-[#F5AB3C] bg-clip-text text-transparent"
+                        >
+                          0%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-between items-center">
+                    <h2
+                      class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      Game 4
+                    </h2>
+                    <div class="relative">
+                      <div
+                        class="container4 transition-all duration-300 dark:before:bg-[#212121]"
+                      >
+                        <div
+                          class="container-value4 transition-all duration-300 bg-gradient-to-r from-[#F53C3C] to-[#F5AB3C] bg-clip-text text-transparent"
+                        >
+                          0%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-between items-center">
+                    <h2
+                      class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      Game 5
+                    </h2>
+                    <div class="relative">
+                      <div
+                        class="container5 transition-all duration-300 dark:before:bg-[#212121]"
+                      >
+                        <div
+                          class="container-value5 transition-all duration-300 bg-gradient-to-r from-[#F53C3C] to-[#F5AB3C] bg-clip-text text-transparent"
+                        >
+                          0%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <h2
+                      class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      SX<sup>2</sup> Survey
+                    </h2>
+                    <div class="relative">
+                      <div
+                        class="container6 transition-all duration-300 dark:before:bg-[#212121]"
+                      >
+                        <div
+                          class="container-value6 transition-all duration-300 dark:text-[#F5F5F5]"
+                        >
+                          0%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="card-3 w-full bg-[#FFFFFF] p-6 rounded-2xl dark:bg-[#212121] transition-all duration-300"
+            >
+              <div class="card-head pb-8">
+                <h2
+                  class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                >
+                  Time Table
+                </h2>
+              </div>
+              <div class="card-body flex flex-col gap-4">
+                <div
+                  class="time-block relative flex rounded-l-sm overflow-hidden rounded-r-lg justify-between py-2 px-6 shadow-[0px_8px_24px_rgba(69,69,80,0.1)] bg-[#FDFDFD] dark:bg-[#303030] transition-all duration-300"
+                >
+                  <div
+                    class="w-1 h-16 bg-[#42E8E0] rounded-sm absolute top-0 left-0"
+                  ></div>
+                  <div>
+                    <p
+                      class="font-rubik text-sm text-[#656575] pb-0.5 dark:text-[#B1B1B1]"
+                    >
+                      Aug 20
+                    </p>
+                    <h3
+                      class="font-rubik font-semibold text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      Game 1
+                    </h3>
+                  </div>
+                  <div>
+                    <span
+                      class="text-[#656575] font-rubik bg-[#F8F7F1] rounded-sm text-xs py-1 px-2 dark:bg-[#121212] dark:text-[#B4B4B4] transition-all duration-300"
+                      >Due</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="time-block relative flex rounded-l-sm overflow-hidden rounded-r-lg justify-between py-2 px-6 shadow-[0px_8px_24px_rgba(69,69,80,0.1)] bg-[#FDFDFD] dark:bg-[#303030] transition-all duration-300"
+                >
+                  <div
+                    class="w-1 h-16 bg-[#77C05C] rounded-sm absolute top-0 left-0"
+                  ></div>
+                  <div>
+                    <p
+                      class="font-rubik text-sm text-[#656575] pb-0.5 dark:text-[#B1B1B1]"
+                    >
+                      Aug 22
+                    </p>
+                    <h3
+                      class="font-rubik font-semibold text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      Game 2
+                    </h3>
+                  </div>
+                  <div>
+                    <span
+                      class="text-[#656575] font-rubik bg-[#F8F7F1] rounded-sm text-xs py-1 px-2 dark:bg-[#121212] dark:text-[#B4B4B4] transition-all duration-300"
+                      >Due</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="time-block relative flex rounded-l-sm overflow-hidden rounded-r-lg justify-between py-2 px-6 shadow-[0px_8px_24px_rgba(69,69,80,0.1)] bg-[#FDFDFD] dark:bg-[#303030] transition-all duration-300"
+                >
+                  <div
+                    class="w-1 h-16 bg-[#FF8676] rounded-sm absolute top-0 left-0"
+                  ></div>
+                  <div>
+                    <p
+                      class="font-rubik text-sm text-[#656575] pb-0.5 dark:text-[#B1B1B1]"
+                    >
+                      Aug 24
+                    </p>
+                    <h3
+                      class="font-rubik font-semibold text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      Game 3
+                    </h3>
+                  </div>
+                  <div>
+                    <span
+                      class="text-[#656575] font-rubik bg-[#F8F7F1] rounded-sm text-xs py-1 px-2 dark:bg-[#121212] dark:text-[#B4B4B4] transition-all duration-300"
+                      >Due</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="time-block relative flex rounded-l-sm overflow-hidden rounded-r-lg justify-between py-2 px-6 shadow-[0px_8px_24px_rgba(69,69,80,0.1)] bg-[#FDFDFD] dark:bg-[#303030] transition-all duration-300"
+                >
+                  <div
+                    class="w-1 h-16 bg-[#4136A4] rounded-sm absolute top-0 left-0"
+                  ></div>
+                  <div>
+                    <p
+                      class="font-rubik text-sm text-[#656575] pb-0.5 dark:text-[#B1B1B1]"
+                    >
+                      Aug 26
+                    </p>
+                    <h3
+                      class="font-rubik font-semibold text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      Game 4
+                    </h3>
+                  </div>
+                  <div>
+                    <span
+                      class="text-[#656575] font-rubik bg-[#F8F7F1] rounded-sm text-xs py-1 px-2 dark:bg-[#121212] dark:text-[#B4B4B4] transition-all duration-300"
+                      >Due</span
+                    >
+                  </div>
+                </div>
+
+                <div
+                  class="time-block relative flex rounded-l-sm overflow-hidden rounded-r-lg justify-between py-2 px-6 shadow-[0px_8px_24px_rgba(69,69,80,0.1)] bg-[#FDFDFD] dark:bg-[#303030] transition-all duration-300"
+                >
+                  <div
+                    class="w-1 h-16 bg-[#7D7D7D] rounded-sm absolute top-0 left-0"
+                  ></div>
+                  <div>
+                    <p
+                      class="font-rubik text-sm text-[#656575] pb-0.5 dark:text-[#B1B1B1]"
+                    >
+                      Aug 30
+                    </p>
+                    <h3
+                      class="font-rubik font-semibold text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                    >
+                      SX<sup>2</sup> Survey
+                    </h3>
+                  </div>
+                  <div>
+                    <span
+                      class="text-[#656575] font-rubik bg-[#F8F7F1] rounded-sm text-xs py-1 px-2 dark:bg-[#121212] dark:text-[#B4B4B4] transition-all duration-300"
+                      >Due</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- hero div ends here -->
+
+          <div class="notification pb-[60px]">
+            <div class="pb-4">
+              <h2
+                class="font-rubik font-medium text-base text-[#1A1919] dark:text-[#F5F5F5]"
+              >
+                Notifications
+              </h2>
+            </div>
+            <div class="grid gap-6 md:grid md:grid-cols-2 md:gap-6">
+              <div
+                class="noti-card py-4 pl-6 bg-[#FFFFFF] rounded-r-lg flex items-center relative dark:bg-[#212121] transition-all duration-300"
+              >
+                <div
+                  class="left-bar w-1.5 h-20 bg-[#7D7D7D] rounded-sm absolute top-0 left-0"
+                ></div>
+                <div>
+                  <h2
+                    class="font-rubik font-semibold text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Principle Component Analysis
+                  </h2>
+                  <h3
+                    class="font-rubik text-base text-[#656575] dark:text-[#B1B1B1]"
+                  >
+                    9:00 AM - 10:00 AM,
+                    <span
+                      class="font-rubik font-semibold text-base text-[#656575] dark:text-[#B1B1B1]"
+                      >7th Jun 2023</span
+                    >
+                  </h3>
+                </div>
+              </div>
+
+              <div
+                class="noti-card py-4 pl-6 bg-[#FFFFFF] rounded-r-lg flex items-center relative dark:bg-[#212121] transition-all duration-300"
+              >
+                <div
+                  class="left-bar w-1.5 h-20 bg-[#7D7D7D] rounded-sm absolute top-0 left-0"
+                ></div>
+                <div>
+                  <h2
+                    class="font-rubik font-semibold text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Principle Component Analysis
+                  </h2>
+                  <h3
+                    class="font-rubik text-base text-[#656575] dark:text-[#B1B1B1]"
+                  >
+                    9:00 AM - 10:00 AM,
+                    <span
+                      class="font-rubik font-semibold text-base text-[#656575] dark:text-[#B1B1B1]"
+                      >7th Jun 2023</span
+                    >
+                  </h3>
+                </div>
+              </div>
+
+              <div
+                class="noti-card py-4 pl-6 bg-[#FFFFFF] rounded-r-lg flex items-center relative dark:bg-[#212121] transition-all duration-300"
+              >
+                <div
+                  class="left-bar w-1.5 h-20 bg-[#7D7D7D] rounded-sm absolute top-0 left-0"
+                ></div>
+                <div>
+                  <h2
+                    class="font-rubik font-semibold text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Principle Component Analysis
+                  </h2>
+                  <h3
+                    class="font-rubik text-base text-[#656575] dark:text-[#B1B1B1]"
+                  >
+                    9:00 AM - 10:00 AM,
+                    <span
+                      class="font-rubik font-semibold text-base text-[#656575] dark:text-[#B1B1B1]"
+                      >7th Jun 2023</span
+                    >
+                  </h3>
+                </div>
+              </div>
+
+              <div
+                class="noti-card py-4 pl-6 bg-[#FFFFFF] rounded-r-lg flex items-center relative dark:bg-[#212121] transition-all duration-300"
+              >
+                <div
+                  class="left-bar w-1.5 h-20 bg-[#7D7D7D] rounded-sm absolute top-0 left-0"
+                ></div>
+                <div>
+                  <h2
+                    class="font-rubik font-semibold text-base text-[#1A1919] dark:text-[#F5F5F5]"
+                  >
+                    Principle Component Analysis
+                  </h2>
+                  <h3
+                    class="font-rubik text-base text-[#656575] dark:text-[#B1B1B1]"
+                  >
+                    9:00 AM - 10:00 AM,
+                    <span
+                      class="font-rubik font-semibold text-base text-[#656575] dark:text-[#B1B1B1]"
+                      >7th Jun 2023</span
+                    >
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- notification div ends here -->
+        </div>
+      </main>
+      <!-- main content ended -->
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
